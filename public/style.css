@@ -1,0 +1,78 @@
+/* Global Settings */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+}
+
+/* Main Container */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(45deg, rgb(174, 68, 215), rgb(114, 29, 187));
+}
+
+/* To-Do Container */
+
+.todo-app {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  background: #fff;
+  max-width: 500px;
+  padding: 30px 20px;
+}
+
+.todo-app h1 {
+  font-size: 2rem;
+  margin: 0px 0px 20px 10px;
+}
+
+/* To-Do Form */
+
+.todo-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50px;
+}
+
+.todo-form,
+#task-input {
+  background: #e4e4e4;
+}
+
+#task-input,
+#submit-button {
+  border: none;
+  outline: none;
+  height: 3rem;
+}
+
+#task-input {
+  font-size: 1.8rem;
+  padding: 10px 20px;
+  flex: 3;
+  border-radius: 50px 0 0 50px;
+}
+
+#submit-button {
+  flex: 1;
+  border-radius: 50px;
+  background: rgb(255, 48, 48);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+#submit-button:hover {
+  cursor: pointer;
+}
