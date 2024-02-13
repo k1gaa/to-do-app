@@ -41,7 +41,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
+  margin-bottom: 30px;
   border-radius: 50px;
 }
 
@@ -51,10 +51,15 @@
 }
 
 #task-input,
-#submit-button {
+#submit-button,
+.todo-library button {
   border: none;
   outline: none;
-  height: 3rem;
+}
+
+#task-input,
+#submit-button {
+  height: 3.5rem;
 }
 
 #task-input {
@@ -73,6 +78,28 @@
   font-size: 1.5rem;
 }
 
-#submit-button:hover {
+button:hover {
   cursor: pointer;
+}
+
+/* To-Do Library */
+
+.todo-library div {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin: 0px 0 15px 10px;
+}
+
+.todo-library p {
+  flex: 2;
+  font-size: 1.2rem;
+}
+
+.todo-library button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background: none;
+  font-weight: 700;
 }
