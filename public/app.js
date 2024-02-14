@@ -2,15 +2,34 @@ const form = document.querySelector(".todo-form");
 const taskInput = document.querySelector("#task-input");
 const todoLibrary = document.querySelector(".todo-library");
 
+const updateTask = () => {
+  fetch("/update")
+    .then((response) => response.json())
+    .then((data) => {
+      updateTaskToView(data);
+    });
+};
+
+updateTask();
+
+const updateTaskToView = (data) => {
+  for (let key in data) {
+    if (data.hasOwnProperty(key)) {
+      addTaskToView(key, data[key]);
+    }
+  }
+};
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const taskDescription = taskInput.value;
 
-  fetch(`/${taskDescription}`)
+  fetch(`/add/${taskDescription}`)
     .then((response) => response.json())
     .then((data) => {
       addTaskToView(data.newTaskIndex, data.newTask);
+      console.log(data.newTaskIndex);
     });
 
   taskInput.value = "";
@@ -29,4 +48,12 @@ const addTaskToView = (taskIndex, task) => {
 
   divElement.setAttribute("data-index", taskIndex);
   todoLibrary.appendChild(divElement);
+
+  btnElement.addEventListener("click", () => {
+    const index = divElement.dataset.index;
+
+    divElement.remove();
+
+    fetch(`/rm/${index}`);
+  });
 };

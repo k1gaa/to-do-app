@@ -1,5 +1,3 @@
-import cookieParser from "cookie-parser";
-
 const library = [];
 
 function task(description) {
@@ -7,10 +5,10 @@ function task(description) {
 }
 
 const getTask = (app) => {
-  app.get("/:newTask", (req, res) => {
+  app.get("/add/:newTask", (req, res) => {
     const newTask = req.params.newTask;
 
-    addTask(newTask);
+    library.push(newTask);
 
     const newTaskIndex = library.indexOf(newTask);
 
@@ -23,8 +21,22 @@ const getTask = (app) => {
   });
 };
 
-const addTask = (newTask) => {
-  library.push(newTask);
+const rmTask = (app) => {
+  app.get("/rm/:index", (req, res) => {
+    const index = req.params.index;
+    library.splice(index, 1);
+
+    res.clearCookie(index);
+
+    res.json();
+  });
 };
 
-export { getTask };
+const updateTask = (app) => {
+  app.get("/update", (req, res) => {
+    const cookies = req.cookies;
+    res.json(cookies);
+  });
+};
+
+export { getTask, rmTask, updateTask };
